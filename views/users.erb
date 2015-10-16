@@ -1,0 +1,8 @@
+	<% @title = "Users" %>
+
+	<h1>Users</h1>
+
+	<% @users.each do |user| %>
+		<a href="/user/<%= user.id %>"><%= user.user_name %></a><br />
+	<% end %>
+

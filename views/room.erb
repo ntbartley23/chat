@@ -1,0 +1,17 @@
+	<% @title = "Welcome to the " + @room.room_name + " Room!" %>
+
+	<h1>Welcome to the <%= @room.room_name %> Room!</h1>
+
+	<p><%= @room.room_description %></p>
+
+	<h2>Posts in this room:</h1>
+
+	<% @room_posts.each do |post| %>
+		<%= post.post_content %><br />
+	<% end %>
+
+	<h2>Users in this room:</h1>
+
+	<% @room_users.each do |user| %>
+		<a href="/user/<%= user.id %>"><%= user.user_name %></a><br />
+	<% end %>

@@ -1,0 +1,15 @@
+	<% @title = "Hello " + @user.user_name + "!" %>
+
+	<h1>Hello <%= @user.user_name %>!</h1>
+	
+	<h2><%= @profile.profile_headline %></h2>	
+
+	<p><%= @profile.profile_content %> !</p>
+
+	<h2>This user is in the following chat rooms:</h2>
+
+	<% @user_rooms.each do |room| %>
+		<a href="/room/<%= room.id %>"><%= room.room_name %></a>
+		- <%= room.room_description %>
+		<br />
+	<% end %>	

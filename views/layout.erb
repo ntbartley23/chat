@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title><%= @title %></title>
+
+</head>
+
+<body>
+
+	<%
+		nav = ["Home", "Users", "Rooms", "Login", "Logout"] 
+		pages = ["", "users", "rooms", "form", "logout"] 
+	%>
+
+	<ul style="list-style-type: none; padding-left: 0">
+
+	<!-- start outputting nav elements as list items -->	
+	<% nav.each_with_index do |page, index| %>
+		<li style="display:inline-block; padding-right: 10px">
+			<a href="/<%= pages[index] %>">
+				<%= page %>
+			</a>	
+		</li>
+	<% end %>
+	<!-- end outputting nav elements as list items -->
+
+	</ul>
+
+	<hr />
+
+	<!-- start yielding the content of our view -->
+	<%= yield %>	
+	<!-- end yielding the content of our view -->
+
+	<!-- start flash messaging -->
+	<% if flash[:notice] %>
+		<div class="flash notice">
+			<%=flash[:notice] %>
+		</div>
+	<% end %>
+	<% if flash[:alert] %>
+		<div class="flash alert">
+			<%=flash[:alert] %>
+		</div>
+	<% end %>
+	<!-- end flash messaging -->
+
+	<hr />
+
+	<% if session[:session_user_id] %>
+		You are logged in as: <%= session[:session_user_name] %>
+	<% end %>
+
+</body>
+</html>
